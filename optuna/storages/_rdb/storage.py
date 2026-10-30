@@ -1001,7 +1001,7 @@ class RDBStorage(BaseStorage, BaseHeartbeat):
 
     @staticmethod
     def _fill_storage_url_template(template: str) -> str:
-        return template.format(SCHEMA_VERSION=models.SCHEMA_VERSION)
+        return template.replace("{SCHEMA_VERSION}", str(models.SCHEMA_VERSION))
 
     def remove_session(self) -> None:
         """Removes the current session.
